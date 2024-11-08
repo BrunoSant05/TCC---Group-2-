@@ -1,0 +1,54 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.recuperar {
+  background-color: #fff;
+  border-radius: 32px;
+  padding: 80px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+}
+
+.recuperar h1 {
+  margin-bottom: 40px;
+}
+
+.recuperar form {
+  display: flex;
+  flex-direction: column;
+}
+
+.recuperar form label {
+  margin-bottom: 20px;
+}
+
+.recuperar form select {
+  margin-bottom: 40px;
+  border-radius: 20px;
+  border: 4px solid #ccc;
+}
+
+.recuperar form input[type="text"],
+.recuperar form input[type="tel"] {
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 4px solid #ccc;
+}
+
+.recuperar form input[type="submit"] {
+  padding: 20px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.s;
+}

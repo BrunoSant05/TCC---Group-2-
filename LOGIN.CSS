@@ -1,0 +1,206 @@
+body {
+    background-color: rgb(2, 255, 221);
+    font-family: Arial, sans-serif;
+    background-size: 100%;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.fade-in-active {
+    opacity: 6;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; 
+    width: 100%;
+    max-width: 500px;
+}
+
+.A {
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.A h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.B {
+    margin-bottom: 15px;
+}
+
+.B label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.B input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.senha_entrar {
+    position: relative;
+}
+
+.senha_entrar .icone {
+    position: absolute;
+    right: 0px;
+    top: 55%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #0026ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0b1bf7;
+}
+
+.C {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.C a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.C a:hover {
+    text-decoration: underline;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.OU {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.OU:before,
+.OU:after {
+     content: "";
+    display: inline-block;
+    width: 45%;
+    height: 1px;
+    background-color: #ccc;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.OU:before {
+    right: 5px;
+}
+
+.OU:after {
+    left: 5px;
+}
+
+.D {
+    text-align: center;
+}
+
+.botoes-externos {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.botoes-externos a {
+    flex: 1;
+    text-align: center;
+    color: #fff;
+    padding: 5px 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.botoes-externos a[href*="facebook.com"] {
+    background-color: #3b5998;
+}
+
+.botoes-externos a[href*="facebook.com"]:hover {
+    background-color: #3b5998;
+    transform: scale(1.05); 
+}
+
+
+.botoes-externos a[href*="gmail.com"] {
+    background-color: #db4437;
+}
+
+.botoes-externos a[href*="gmail.com"]:hover {
+    background-color: #db4437;
+    transform: scale(1.05);
+}
+
+.lembrar-senha {
+    margin-top: -10px;
+    text-align: center;
+}
+
+.icon {
+    margin-right: 8px;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .botoes-externos {
+        flex-direction: column;
+    }
+
+    .botoes-externos a {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .OU:before,
+    .OU:after {
+        width: 44%;
+    }
+}
