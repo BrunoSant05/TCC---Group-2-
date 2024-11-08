@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/Cadastrar.css">
+</head>
+<body>
+    <div class="cadastro">
+        <form id="signup-form" action="API/cadastro.php" method="post" enctype="multipart/form-data">
+            <h2>Faça o seu cadastro:</h2>
+            <div class="foto" id="foto">
+                <img src="img/anonimo.PNG" alt="foto_feita">
+            </div>
+
+            <label for="upload" id="escolher">Escolher Foto</label>
+            <input type="file" id="upload" name="foto" accept="image/*">
+            <br/>
+
+            <div class="form-group">
+                <div class="ficha">
+                    <label for="nome">Nome completo:</label>
+                    <input type="text" id="nome" name="nome" required> 
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="ficha">
+                    <label for="usuario">Usuário:</label>
+                    <input type="text" id="usuario" name="usuario" required>
+                </div>
+
+                <div class="ficha">
+                    <label for="data_nascimento">Data de nascimento:</label>
+                    <input type="date" id="data_nascimento" name="data_nascimento" required>
+                    <span id="idade">Idade: 0 anos</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="ficha">
+                    <label for="telefone">Número de Celular:</label>
+                    <input type="text" id="telefone" name="telefone" placeholder="Ex: +55 (12) 98765-4321" required>
+                </div>
+
+                <div class="ficha">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+      
+            <div class="form-group">
+                <div class="ficha">
+                    <label for="senha">Senha:</label>
+                    <div class="password-input">
+                        <input type="password" id="senha" name="senha" required>
+                        <span class="icone" id="olho_senha">
+                            <svg id="olho_fechado_senha" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path>
+                                <circle id="pupil" cx="12" cy="12" r="3" fill="black"></circle>
+                            </svg>
+                            
+                              <svg id="olho_aberto_senha" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="display: none;">
+                                <path d="M12 4C6.48 4 2 12 2 12s4.48 8 10 8 10-8 10-8-4.48-8-10-8z" fill="#ccc"/>
+                                <path d="M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            
+                        </span>
+                    </div>
+                </div>
+
+                <div class="ficha">
+                    <label for="confirmar_senha">Confirmar Senha:</label>
+                    <div class="password-input">
+                        <input type="password" id="confirmar_senha" name="confirmar_senha" required>
+                        
+                         <span class="icone" id="olho_confirmar_senha">
+                            <svg id="olho_fechado_confirmar_senha" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path>
+                                <circle id="pupil_confirmar" cx="12" cy="12" r="3" fill="black"></circle>
+                            </svg>
+                            <svg id="olho_aberto_confirmar_senha" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="display: none;">
+                                <path d="M12 4C6.48 4 2 12 2 12s4.48 8 10 8 10-8 10-8-4.48-8-10-8z" fill="#ccc"/>
+                                <path d="M5 12h14" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" value="Cadastrar">
+        </form>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+    
+      <script> $(document).ready(function() {
+    $('#signup-form').submit(function(event) {
+        event.preventDefault(); // Impede o envio padrão
+
+        // Cria um FormData para enviar os dados do formulário
+        var formData = new FormData(this);
+
+        // Envia os dados usando AJAX
+        $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'),
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                const result = JSON.parse(response);
+                $('#mensagem').show().html(result.message);
+
+                if (result.status === 'success') {
+                    $('#mensagem').css('color', 'green');
+                    $('#signup-form')[0].reset(); // Limpa o formulário
+                } else {
+                    $('#mensagem').css('color', 'red');
+                }
+            },
+            error: function() {
+                $('#mensagem').show().css('color', 'red').html("Erro ao cadastrar. Tente novamente.");
+            }
+        });
+    });
+});
+     </script>
+    
+    
+    <script src="js/Cadastrar.js"></script>
+</body>
+</html>
